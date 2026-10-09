@@ -20,7 +20,7 @@ if (!entry) { location.replace('home.html'); }
 const discIdx = entry.discIdx;
 const topic = entry.topic;
 const isPrepa = idx[discIdx] && idx[discIdx].section === 'prepa';
-document.title = topic.topic + ' — Flashcards FMPA';
+document.title = topic.topic + ' — Flashcards FMPT';
 
 /* Coquille immédiate — aucun écran de chargement. */
 document.getElementById('app').innerHTML = `
@@ -76,7 +76,6 @@ authP.then(async () => {
     $('#demoSlot').innerHTML = `<div class="demo-note">🎁 <b>Démo :</b> ${order.length} cartes sur ${topic.cards.length}.
       <a href="profil.html" style="color:#0a5f66;font-weight:700">Tout débloquer dès 100 DH →</a></div>`;
   } else if (hasFull()) {
-    $('#qcmSlot').innerHTML = `<a class="btn btn-ghost" href="qcm-setup.html?kind=topic&d=${discIdx}&id=${encodeURIComponent(topicId)}" style="text-decoration:none;text-align:center">✅ QCM sur ce sujet</a>`;
   }
 
   $('#fcard').onclick = () => {

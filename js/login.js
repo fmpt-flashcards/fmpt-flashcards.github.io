@@ -18,9 +18,9 @@ function vLogin(err) {
   $('#app').innerHTML = `
     <div class="login-wrap">
     <div class="login-card">
-      <div class="login-logo">🩺</div>
-      <h1>Flashcards FMPA</h1>
-      <p class="login-sub">13 290 flashcards · classement<br>Ta progression sauvegardée partout.</p>
+      <div class="login-logo"><img src="fmpt-logo-circle.jpg" alt="FMPT" style="width:96px;height:96px;border-radius:50%;object-fit:cover"></div>
+      <h1>Flashcards FMPT</h1>
+      <p class="login-sub">Faculté de Médecine et de Pharmacie de Tanger<br>9 240 flashcards · classement<br>Ta progression sauvegardée partout.</p>
       <button class="btn btn-google" id="gBtn">${G_LOGO}<span>Continuer avec Google</span></button>
       <div class="hr">ou par email</div>
       <label class="fld"><span>Email</span>

@@ -54,7 +54,7 @@ function render() {
       <button data-t="alltime" class="${lbTab === 'alltime' ? 'on' : ''}">Tout temps</button>
     </div>
     <div id="lbList"><div class="empty">Chargement…</div></div>
-    <p class="small" style="text-align:center">Gagne de l'XP : QCM (jusqu'à 20 XP/question parfaite), cartes étudiées (1 XP/carte).</p>`;
+    <p class="small" style="text-align:center">Gagne de l'XP : cartes étudiées (1 XP/carte), séries quotidiennes et défis du plan d'étude.</p>`;
   $$('.tabs button').forEach(b => b.onclick = () => { lbTab = b.dataset.t; render(); });
   const nb = $('#nickBtn');
   if (nb) nb.onclick = async () => {

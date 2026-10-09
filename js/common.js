@@ -1,5 +1,5 @@
 /* ============================================================================
-   FMPA Flashcards — common.js : fondation partagée de toutes les pages.
+   FMPT Flashcards — common.js : fondation partagée de toutes les pages.
    Firebase, auth, profil/XP, progression, sessions, utilitaires, tabbar.
    ============================================================================ */
 import { initializeApp } from '../vendor/firebase/firebase-app.js';
@@ -126,7 +126,7 @@ async function resetDb() {
 export let user = null;
 export let profile = null;
 export const proTier = () => (profile && profile.proTier) || null;
-export const hasCards = () => proTier() === 'cards' || proTier() === 'full';
+export const hasCards = () => proTier() === 'full'; // FMPT : une seule formule (100 DH)
 export const hasFull = () => proTier() === 'full';
 export const isPro = () => hasCards(); // compat : tout palier payant
 
@@ -240,7 +240,7 @@ function defaultProfile(u) {
     displayName: u.displayName || (u.email ? u.email.split('@')[0] : 'Étudiant'),
     photoURL: u.photoURL || '',
     nickname: '',
-    proTier: null, // 'cards' (100 DH) | 'full' (150 DH) | null (démo)
+    proTier: null, // 'full' (100 DH, formule unique) | null (démo)
     proSince: null,
     xp: 0, streak: 0, lastStudyDay: '',
     mcqTotal: 0, mcqCorrect: 0, cardsSeen: 0,
@@ -477,22 +477,10 @@ export async function loadPlan() {
   _plan = await (await fetch('plan.json')).json();
   return _plan;
 }
-let _mcqmIndex = null;
-export async function loadMcqmIndex() {
-  if (_mcqmIndex) return _mcqmIndex;
-  _mcqmIndex = await (await fetch('mcqm-index.json')).json();
-  return _mcqmIndex;
-}
-/* Banque QCM multi-réponses d'un sujet : [{q, options[5], correct[2..4], explain[5]}] */
-export async function loadTopicMcqm(topicId) {
-  const r = await fetch('mcqm/' + topicId + '.json');
-  if (!r.ok) throw new Error('Banque QCM introuvable pour ' + topicId);
-  return r.json();
-}
 
 /* ------------------------------ UI shell ------------------------------- */
 export function waUnlockLink() {
-  const txt = encodeURIComponent('Salut ! Je veux débloquer Flashcards FMPA (100 DH). Mon email de compte : ');
+  const txt = encodeURIComponent('Salut ! Je veux débloquer Flashcards FMPT (100 DH). Mon email de compte : ');
   return 'https://wa.me/' + WA_NUMBER + '?text=' + txt;
 }
 
@@ -526,7 +514,7 @@ export function bindRedeem() {
   const b = $('#redeemBtn');
   if (b) b.onclick = () => redeemCode($('#redeemInput').value);
 }
-/* Verrou version complète (FMPA : une seule formule à 100 DH). */
+/* Verrou version complète (FMPT : une seule formule à 100 DH). */
 export function guardPro(feature, tab) {
   if (hasCards()) return true;
   $('#app').innerHTML = lockHtml(feature);
@@ -534,7 +522,7 @@ export function guardPro(feature, tab) {
   bindRedeem();
   return false;
 }
-/* Verrou formule Full (QCM). */
+/* Verrou version complète. */
 export function guardFull(feature, tab) {
   if (hasFull()) return true;
   $('#app').innerHTML = lockHtml(feature, true);
@@ -573,7 +561,7 @@ export async function redeemCode(raw) {
   setTimeout(() => location.reload(), 900);
 }
 
-/* Crédite le parrain (15 DH) quand un filleul active son Pro. */
+/* Crédite le parrain (10 DH) quand un filleul active son Pro. */
 async function creditReferrer(db) {
   let refCode = null;
   try { refCode = localStorage.getItem('fmpr_ref'); } catch (e) {}
@@ -601,7 +589,7 @@ async function creditReferrer(db) {
     commission: REF_COMMISSION,
     createdAt: serverTimestamp(),
   });
-  // 2) Crédite le parrain (règles : +15/+1, avec preuve existante).
+  // 2) Crédite le parrain (règles : +10/+1, avec preuve existante).
   await runTransaction(db, async (tx) => {
     const rsnap = await tx.get(referrerRef);
     if (!rsnap.exists()) throw new Error('no-referrer');

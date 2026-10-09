@@ -1,20 +1,19 @@
-/* FMPA Flashcards — service worker : application multi-pages.
+/* FMPT Flashcards — service worker : application multi-pages.
    - shell (pages HTML, js, css…) : NETWORK-FIRST → chaque déploiement
      est pris en compte dès la visite suivante, avec repli sur le cache hors-ligne.
-   - données (disc-*.json, index.json, plan.json, mcqm/…) : NETWORK-FIRST →
+   - données (disc-*.json, index.json, plan.json) : NETWORK-FIRST →
      toujours frais en ligne, repli sur le cache hors-ligne.
    Les appels Firebase / Google ne sont jamais mis en cache.
    IMPORTANT : incrémenter CACHE à chaque changement de stratégie/fichiers. */
-const CACHE = 'fmpa-v3';
+const CACHE = 'fmpt-v1';
 const CORE = [
   './', 'index.html', 'home.html', 'discipline.html', 'topic.html',
-  'qcm.html', 'qcm-sujets.html', 'qcm-setup.html', 'quiz.html',
-  'classement.html', 'plan.html', 'profil.html', 'pathologies.html',
-  'um6ss.html', 'um6ss-quiz.html', 'um6ss-logo.png',
+  'classement.html', 'plan.html', 'profil.html',
   'styles.css', 'firebase-config.js', 'manifest.json',
+  'fmpt-logo-circle.jpg', 'fmpt-logo-banner.jpg',
   'js/common.js', 'js/login.js', 'js/home.js', 'js/discipline.js',
-  'js/topic.js', 'js/qcm.js', 'js/quiz.js', 'js/classement.js',
-  'js/plan.js', 'js/profil.js', 'js/patho.js', 'js/um6ss.js', 'js/um6ss-quiz.js',
+  'js/topic.js', 'js/classement.js',
+  'js/plan.js', 'js/profil.js',
   'vendor/firebase/firebase-app.js', 'vendor/firebase/firebase-auth.js',
   'vendor/firebase/firebase-firestore.js',
 ];
@@ -23,10 +22,6 @@ const DATA_PATTERNS = [
   /\/index\.json$/,
   /\/topics-index\.json$/,
   /\/plan\.json$/,
-  /\/mcqm-index\.json$/,
-  /\/mcqm\/[\w-]+\.json$/,
-  /\/patho\/.*\.json$/,
-  /\/um6ss\/.*\.json$/,
 ];
 
 
