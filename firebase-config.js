@@ -1,14 +1,14 @@
 // ============================================================================
-//  FMPA Flashcards — configuration Firebase (projet dédié)
-//  Projet : fmpa-flashcards | Compte : anzajewls@gmail.com
+//  FMPT Flashcards — configuration Firebase (projet dédié)
+//  Projet : fmpt-flashcards | Compte : anzajewls@gmail.com
 // ============================================================================
 export const firebaseConfig = {
-  apiKey: "AIzaSyDex6lZqD5GTG8Kod_GHEavF7xKsgjFrdY",
-  authDomain: "fmpa-flashcards.firebaseapp.com",
-  projectId: "fmpa-flashcards",
-  storageBucket: "fmpa-flashcards.firebasestorage.app",
-  messagingSenderId: "540562510232",
-  appId: "1:540562510232:web:0e016f3b09e92157791bed"
+  apiKey: "AIzaSyCqiN5-OzoM6w_1iXXYkfvIGL-JuVaMCL8",
+  authDomain: "fmpt-flashcards.firebaseapp.com",
+  projectId: "fmpt-flashcards",
+  storageBucket: "fmpt-flashcards.firebasestorage.app",
+  messagingSenderId: "143651699970",
+  appId: "1:143651699970:web:5b504c88e77f5ffabc561b"
 };
 
 // Email de l'administrateur — seul cet email peut générer des codes.

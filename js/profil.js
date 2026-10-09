@@ -14,7 +14,7 @@ const p = profile;
 const acc = p.mcqTotal ? Math.round(p.mcqCorrect / p.mcqTotal * 100) : 0;
 const lvl = levelFor(p.xp || 0);
 const app = document.getElementById('app');
-const refLink = 'https://fmpa-flashcards.github.io/?ref=' + encodeURIComponent(p.referralCode || '');
+const refLink = 'https://fmpt-flashcards.github.io/?ref=' + encodeURIComponent(p.referralCode || '');
 const refBalance = p.refBalance || 0;
 const refCount = p.refCount || 0;
 const canWithdraw = refBalance >= REF_MIN_WITHDRAW;
@@ -54,7 +54,7 @@ app.innerHTML = `
     <div class="r"><span class="k">💰 Solde</span><span class="v"><b>${refBalance} DH</b></span></div>
   </div>
   ${canWithdraw
-    ? `<a class="btn btn-primary" id="waWithdraw" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Salam, je veux retirer mon solde FMPA : ' + refBalance + ' DH (' + refCount + ' filleul(s)). Mon code parrain : ' + (p.referralCode || ''))}" target="_blank" rel="noopener" style="text-decoration:none">💸 Retirer via WhatsApp (${refBalance} DH)</a>`
+    ? `<a class="btn btn-primary" id="waWithdraw" href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Salam, je veux retirer mon solde FMPT : ' + refBalance + ' DH (' + refCount + ' filleul(s)). Mon code parrain : ' + (p.referralCode || ''))}" target="_blank" rel="noopener" style="text-decoration:none">💸 Retirer via WhatsApp (${refBalance} DH)</a>`
     : `<p class="small" style="text-align:center;color:#5b6b7c">Retrait possible dès ${REF_MIN_WITHDRAW} DH — partage ton lien !</p>`}
   <div class="kv mt">
     <div class="r"><span class="k"><b>📱 Mes appareils</b></span><span class="v small">max 2 connectés</span></div>
