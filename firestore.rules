@@ -210,7 +210,7 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /lb_alltime/users/{uid} {
+    match /lb_alltime/{uid} {
       allow read: if signedIn();
       allow create, update: if ownUid(uid)
         && request.resource.data.xp >= 0

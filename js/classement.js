@@ -15,7 +15,7 @@ const app = document.getElementById('app');
 function tabCol() {
   return lbTab === 'weekly'
     ? collection(db, 'lb_weekly', isoWeekId(), 'users')
-    : collection(db, 'lb_alltime', 'users');
+    : collection(db, 'lb_alltime');
 }
 
 async function renderLb() {
