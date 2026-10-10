@@ -369,7 +369,10 @@ export async function getTP(topicId) {
   let data = tpDefault();
   if (user) {
     try {
-      const snap = await getDoc(doc(db, 'users', user.uid, 'topics', topicId));
+      const snap = await Promise.race([
+        getDoc(doc(db, 'users', user.uid, 'topics', topicId)),
+        new Promise((_, rej) => setTimeout(() => rej(new Error('tp-timeout')), 8000)),
+      ]);
       if (snap.exists()) data = Object.assign(tpDefault(), snap.data());
     } catch (e) { console.warn('tp load', e); }
   }
@@ -450,18 +453,36 @@ export async function listSessions() {
 }
 
 /* --------------------------- data loading ----------------------------- */
+/* Robust fetch with retry for flaky connections. */
+async function fetchJSON(url, retries = 3) {
+  let lastErr = null;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (e) {
+      lastErr = e;
+      if (attempt < retries) {
+        await new Promise(r => setTimeout(r, 1000 * attempt));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 let _index = null;
 const _discs = {};
 const _topicsById = {};
 export async function loadIndex() {
   if (_index) return _index;
-  _index = await (await fetch('index.json')).json();
+  _index = await fetchJSON('index.json');
   return _index;
 }
 export async function loadDisc(i) {
   if (_discs[i]) return _discs[i];
   const idx = await loadIndex();
-  const disc = await (await fetch(idx[i].file)).json();
+  const disc = await fetchJSON(idx[i].file);
   _discs[i] = disc;
   for (const t of disc.topics) _topicsById[t.id] = { discIdx: i, topic: t };
   return disc;
@@ -474,7 +495,7 @@ export function topicEntry(id) { return _topicsById[id] || null; }
 let _plan = null;
 export async function loadPlan() {
   if (_plan) return _plan;
-  _plan = await (await fetch('plan.json')).json();
+  _plan = await fetchJSON('plan.json');
   return _plan;
 }
 
