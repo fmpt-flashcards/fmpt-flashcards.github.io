@@ -13,7 +13,7 @@ import { firebaseConfig } from '../firebase-config.js';
 
 export const WA_NUMBER = '212605235053';
 export const DEMO_N = 5;                 // cartes visibles en démo (non-Pro)
-export const REF_COMMISSION = 10;        // DH par filleul parrainé
+export const REF_COMMISSION = 15;        // DH par filleul parrainé
 export const REF_MIN_WITHDRAW = 30;      // DH minimum pour retirer
 export const DISC_EMOJI = ['🫀', '🦴', '🧬', '🔪', '🚨', '💊', '🩸', '🪱', '🦠', '🛡️', '🧫'];
 
@@ -582,7 +582,7 @@ export async function redeemCode(raw) {
   setTimeout(() => location.reload(), 900);
 }
 
-/* Crédite le parrain (10 DH) quand un filleul active son Pro. */
+/* Crédite le parrain (15 DH) quand un filleul active son Pro. */
 async function creditReferrer(db) {
   let refCode = null;
   try { refCode = localStorage.getItem('fmpr_ref'); } catch (e) {}
