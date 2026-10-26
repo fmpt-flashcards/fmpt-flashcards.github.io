@@ -24,9 +24,9 @@ const FACULTIES = [
   ['fmpm', 'FMPM · Marrakech', 'fmpm.flashcartes.com'],
 ];
 
-/* Cartes démo réelles — sujet t2 « Vascularisation de l'encéphale :
-   la région axillaire : paroi et contenu », Anatomie FMPT. Jamais de
-   carte inventée : question → réponse, tirées de disc-0.json. */
+/* Cartes démo réelles — sujet t0 « la région axillaire : paroi et contenu »,
+   Anatomie FMPT. Jamais de carte inventée :
+   question → réponse, tirées de disc-0.json. */
 const DEMO_CARDS = [
   { q: "Qu'est-ce que le creux axillaire (fosse axillaire) ?", a: "L'ensemble des parties molles situées entre l'articulation scapulo-humérale en dehors et la paroi externe du thorax en dedans. C'est le hile du membre supérieur, une importante région de passage.", n: '1/30' },
   { q: "Quelle est la forme générale de la fosse axillaire ?", a: "Une pyramide orientée en bas et en dehors, avec un sommet supérieur et une base inférieure.", n: '2/30' },
@@ -92,7 +92,7 @@ function vLogin(err, mode) {
         <li><span class="feat-ic">${'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4zM7 6H4a1 1 0 0 0-1 1c0 2 1.5 3 3 3M17 6h3a1 1 0 0 1 1 1c0 2-1.5 3-3 3"/></svg>'}</span><div><b>Classement &amp; XP</b><p>+1 XP par carte étudiée, niveaux, série de jours. Tu vois exactement où tu en es.</p></div></li>
       </ul>
     </section>`;
-  /* --- carte démo : vraies cartes t2, tap pour retourner --- */
+  /* --- carte démo : vraies cartes t0, tap pour retourner --- */
   let demoPos = 0, demoFlipped = false;
   const renderDemo = () => {
     const c = DEMO_CARDS[demoPos];
