@@ -48,7 +48,7 @@ app.innerHTML = `
       <div class="formula hot">
         <div class="f-ic">${icon('book')}</div>
         <b>Version complète — 100 DH</b>
-        <div class="small">16 260 cartes illimitées<br>classement · plan</div>
+        <div class="small">16 775 cartes illimitées<br>classement · plan</div>
       </div>
     </div>
     <p class="small">Paiement unique, à vie.</p>

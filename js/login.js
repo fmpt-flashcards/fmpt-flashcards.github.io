@@ -55,13 +55,13 @@ function vLogin(err, mode) {
         <button class="btn btn-gold" id="demoNext" type="button">Nouvelle carte →</button>
         <p class="demo-src" id="demoSrc"></p>
       </div>
-      <div class="hero-stats"><span><b>542</b> sujets</span><span><b>16 260</b> cartes</span><span><b>100 DH</b> à vie</span></div>
+      <div class="hero-stats"><span><b>560</b> sujets</span><span><b>16 775</b> cartes</span><span><b>100 DH</b> à vie</span></div>
     </section>
     <div class="login-wrap">
     <div class="login-card">
       <div class="login-logo" aria-hidden="true"><img src="icon-512.png" alt="Flashcards" width="56" height="56"></div>
       <h1>${isSignup ? 'Créer ton compte FMPT' : 'Bon retour'}</h1>
-      <p class="login-sub">Choisis ta faculté, puis ${isSignup ? 'crée ton compte' : 'connecte-toi'} pour reprendre où tu t’étais arrêté.<br><b>542 sujets · 16 260 cartes</b> · classement</p>
+      <p class="login-sub">Choisis ta faculté, puis ${isSignup ? 'crée ton compte' : 'connecte-toi'} pour reprendre où tu t’étais arrêté.<br><b>560 sujets · 16 775 cartes</b> · classement</p>
       <label class="fld"><span>Faculté</span>
         <select class="input" id="facSel">${FACULTIES.map(([code, label]) => `<option value="${code}"${code === 'fmpt' ? ' selected' : ''}>${label}</option>`).join('')}</select>
         <span class="fld-note">Chaque faculté a son propre compte et son propre abonnement — choisis la tienne pour te connecter au bon espace.</span></label>

@@ -125,7 +125,7 @@ document.getElementById('app').innerHTML = `
     <h2 id="hello">Salut ${esc(cpFirst)}</h2>
     <div class="streak" id="streak">${icon('flame')} <span id="streakN">${cp.streak || 0}</span>&nbsp;jour${(cp.streak || 0) > 1 ? 's' : ''} de série</div>
   </div>
-  <div class="hello-sub" id="helloSub">542 sujets · 16 260 cartes · FMPT Tanger</div>
+  <div class="hello-sub" id="helloSub">560 sujets · 16 775 cartes · FMPT Tanger</div>
   <div class="xpbar" id="xpbar">
     <div class="row"><b id="lvl">Niveau ${cpLvl}</b><span id="xp"><b>${(cp.xp || 0).toLocaleString('fr-FR')} XP</b> · encore ${500 - ((cp.xp || 0) % 500)} XP avant le Niveau ${cpLvl + 1}</span></div>
     <div class="track"><div id="xpfill" style="width:${cpPct}%"></div></div>

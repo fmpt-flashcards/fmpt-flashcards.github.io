@@ -626,7 +626,7 @@ export function lockHtml(feature) {
   return `<div class="lock">
     <div class="big">${ICONS.lock}</div>
     <h2>${feature} — Version complète</h2>
-    <p>Débloque les 16 260 cartes et le classement pour <b>100 DH</b>.<br>Paiement unique, à vie.</p>
+    <p>Débloque les 16 775 cartes et le classement pour <b>100 DH</b>.<br>Paiement unique, à vie.</p>
     <a class="btn btn-primary" href="${waUnlockLink()}" target="_blank" rel="noopener"
        style="text-decoration:none">Commander sur WhatsApp</a>
     <div class="hr">ou entre ton code d'activation</div>
